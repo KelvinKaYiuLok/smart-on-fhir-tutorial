@@ -125,8 +125,38 @@
         xhr.send(body);        
         */
 
-        const payload = {
-          code: obj.code,
+        /*getToken(obj.code);*/
+        refreshToken(obj.code);
+    }
+
+      function refreshToken(code) {
+         const payload = {
+          grant_type: "refresh_token",
+          refresh_token: code
+        };
+
+          var formBody = [];
+          for (var property in payload) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(payload[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+          }
+          formBody = formBody.join("&");
+          
+          fetch("https://authorization.cerner.com/tenants/ec2458f2-1e24-41c8-b71b-0e701af7583d/protocols/oauth2/profiles/smart-v1/token", {
+            method: "POST",
+            body: formBody,
+            headers: {
+              "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            }
+          })
+          .then((response) => response.json())
+          .then((json) => console.log(json));  
+      }
+
+      function getToken(code) {
+         const payload = {
+          code: code,
           grant_type: "authorization_code",
           redirect_uri: "https://kelvinkayiulok.github.io/smart-on-fhir-tutorial/example-smart-app/",
           client_id: "1beed1ab-0420-4ec1-9516-9fa5eb1da24f"
@@ -148,9 +178,9 @@
           }
         })
           .then((response) => response.json())
-          .then((json) => console.log(json));
-          
-    }
+          .then((json) => console.log(json));      
+      }
+      
     </script>
   </body>
 </html>
