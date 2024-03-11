@@ -126,13 +126,13 @@
         */
 
         /*getToken(obj.code);*/
-        refreshToken(obj.code);
+        refreshToken(obj.access_token);
     }
 
-      function refreshToken(code) {
+      function refreshToken(accessToken) {
          const payload = {
           grant_type: "refresh_token",
-          refresh_token: code
+          refresh_token: accessToken
         };
 
           var formBody = [];
