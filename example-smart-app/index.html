@@ -12,6 +12,8 @@
     -->
   </head>
   <body>
+    <button onclick="getTokenResponse()">Get token response</button>
+    <p id="tokenResponse"></p>
     <div id='errors'>
     </div>
     <div id="loading" class="spinner">
@@ -96,6 +98,11 @@
           $('#errors').html('<p> Failed to call FHIR Service </p>');
         }
       );
+
+      function getTokenResponse() {
+        let tokenResponse = sessionStorage.getItem("tokenResponse");
+        document.getElementById("tokenResponse").innerHTML = tokenResponse;
+      }
     </script>
   </body>
 </html>
