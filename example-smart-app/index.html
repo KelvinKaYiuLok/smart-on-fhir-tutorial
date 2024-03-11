@@ -101,7 +101,8 @@
 
       function getTokenResponse() {
         let tokenResponse = sessionStorage.getItem("tokenResponse");
-        document.getElementById("tokenResponse").innerHTML = tokenResponse;
+        const obj = JSON.parse(tokenResponse);
+        document.getElementById("tokenResponse").innerHTML = JSON.stringify(obj, null, 4);
       }
     </script>
   </body>
