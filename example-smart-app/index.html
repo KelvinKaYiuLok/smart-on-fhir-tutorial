@@ -107,7 +107,7 @@
         document.getElementById("code").innerHTML = obj.code;
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://authorization.cerner.com/tenants/ec2458f2-1e24-41c8-b71b-0e701af7583d/protocols/oauth2/profiles/smart-v1/tokens");
+        xhr.open("POST", "https://authorization.cerner.com/tenants/ec2458f2-1e24-41c8-b71b-0e701af7583d/protocols/oauth2/profiles/smart-v1/token");
         xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
         const body = JSON.stringify({
             code: obj.code,
