@@ -14,6 +14,7 @@
   <body>
     <button onclick="getTokenResponse()">Get token response</button>
     <p id="tokenResponse"></p>
+    <p id="code"></p>
     <div id='errors'>
     </div>
     <div id="loading" class="spinner">
@@ -103,6 +104,7 @@
         let tokenResponse = sessionStorage.getItem("tokenResponse");
         const obj = JSON.parse(tokenResponse);
         document.getElementById("tokenResponse").innerHTML = JSON.stringify(obj, null, 4);
+        document.getElementById("code").innerHTML = obj.code;
       }
     </script>
   </body>
